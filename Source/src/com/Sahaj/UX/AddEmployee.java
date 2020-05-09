@@ -26,7 +26,8 @@ public class AddEmployee {
 		Scanner sc = new Scanner(System.in);
 		ArrayList<String> choices = new ArrayList<String>();
 		System.out.print("Name : ");
-		name = sc.next();
+		name = sc.nextLine();
+		System.out.println(name);
 		System.out.print("SalaryType : ");
 		choices.clear();
 		choices.add("Monthly Salary");
@@ -64,6 +65,9 @@ public class AddEmployee {
 		
 		System.out.print("Address : ");
 		address = sc.nextLine();
+		if (address.equals("")){
+			address = sc.nextLine();
+		}
 
 		DatabaseInteractor.getInstance().addEmployee(name,paymentScheme,salary,commission,modeOfPayment,address);
 

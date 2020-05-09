@@ -23,7 +23,10 @@ public class DatabaseInteractor {
 
 
 	public void addEmployee(String name, PaymentScheme paymentScheme, float salary, float commission, ModeOfPayment modeOfPayment, String address) {
-	
+
+		System.out.println(name);
+		System.out.println(address);
+
 		//@// TODO: 09/05/20 Add Employee code
 		
 	}
@@ -53,5 +56,8 @@ public class DatabaseInteractor {
 	}
 
 	public void addTimeCard(int id, Date date, Float amount) {
+	}
+
+	public void addCharge(int id, Date date, Float amount, String reason) {
 	}
 }

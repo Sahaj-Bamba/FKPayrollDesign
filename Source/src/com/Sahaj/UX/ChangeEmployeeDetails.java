@@ -10,6 +10,11 @@ public class ChangeEmployeeDetails extends Menu{
 
 	int id;
 
+	public ChangeEmployeeDetails(){
+		super();
+		start();
+	}
+
 	@Override
 	protected void init() {
 
@@ -26,14 +31,16 @@ public class ChangeEmployeeDetails extends Menu{
 	@Override
 	protected void makeMove(int choice) {
 
-		Scanner sc = new Scanner(System.in);
-		while (true){
-			System.out.print("Salary : ");
-			try{
-				id = Integer.parseInt(sc.next());
-				break;
-			}catch (NumberFormatException ex) {
-				System.out.println("Please enter correct amount.");
+		if (choice!=6) {
+			Scanner sc = new Scanner(System.in);
+			while (true) {
+				System.out.print("Employee Id : ");
+				try {
+					id = Integer.parseInt(sc.next());
+					break;
+				} catch (NumberFormatException ex) {
+					System.out.println("Please enter correct amount.");
+				}
 			}
 		}
 

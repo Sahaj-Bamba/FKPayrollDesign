@@ -18,7 +18,7 @@ public class MainMenu extends Menu {
 		choices.add("Delete Employee ");
 		choices.add("Post Time Card ");
 		choices.add("Post Sales receipt ");
-		choices.add("Post Membership fees ");
+		choices.add("Union ");
 		choices.add("Post Service Charge ");
 		choices.add("Change Employee details ");
 		choices.add("Run PayRoll ");
@@ -36,7 +36,7 @@ public class MainMenu extends Menu {
 				break;
 			case 4: new PostSalesReceipt();
 				break;
-			case 5: new UnionFees();
+			case 5: new Union();
 				break;
 			case 6: new ServiceCharge();
 				break;
