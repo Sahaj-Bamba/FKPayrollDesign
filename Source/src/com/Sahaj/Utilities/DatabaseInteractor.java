@@ -3,6 +3,8 @@ package com.Sahaj.Utilities;
 import com.Sahaj.Constant.ModeOfPayment;
 import com.Sahaj.Constant.PaymentScheme;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Date;
 
 public class DatabaseInteractor {
@@ -24,11 +26,31 @@ public class DatabaseInteractor {
 
 	public void addEmployee(String name, PaymentScheme paymentScheme, float salary, float commission, ModeOfPayment modeOfPayment, String address) {
 
-		System.out.println(name);
-		System.out.println(address);
+		int id = -1;
+		ResultSet resultSet = SQLQueryExecuter.getInstance().select("Select Id from Employee order by Id desc");
 
-		//@// TODO: 09/05/20 Add Employee code
-		
+		try {
+			if(resultSet.next()) {
+				id = resultSet.getInt("Id");
+			}
+		} catch (SQLException throwables) {
+			System.out.println("Something went wrong");
+		}
+
+		// Adding
+		SQLQueryExecuter.getInstance().update("INSERT INTO `Employee`(`Name`, `SalaryType`, `Salary`, `Comission`, `ModeOfPayment`, `Address`) VALUES ('"+name+"',"+paymentScheme.ordinal()+","+salary+","+commission+","+modeOfPayment.ordinal()+",'"+address+"')");
+
+		resultSet = SQLQueryExecuter.getInstance().select("Select Id from Employee order by Id desc");
+
+		try {
+			if(resultSet.next() && id != resultSet.getInt("Id")) {
+				id = resultSet.getInt("Id");
+				System.out.println("New Employee added with id " + id);
+			}
+		} catch (SQLException throwables) {
+			System.out.println("Something went wrong");
+		}
+
 	}
 
 	public void deleteEmployee(int id) {

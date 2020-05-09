@@ -68,7 +68,8 @@ public class SQLQueryExecuter {
 		try {
 			return this.stm.executeQuery(sql);
 		} catch (SQLException ex) {
-			Logger.getLogger(SQLQueryExecuter.class.getName()).log(Level.SEVERE, null, ex);
+			System.out.println("There was some problem.");
+			System.out.println("Please check your values and try again latter");
 		}
 		return null;
 	}
@@ -78,7 +79,8 @@ public class SQLQueryExecuter {
 		try {
 			this.stm.executeUpdate(sql);
 		} catch (SQLException ex) {
-			Logger.getLogger(SQLQueryExecuter.class.getName()).log(Level.SEVERE, null, ex);
+			System.out.println("There was some problem.");
+			System.out.println("Please check your values and try again latter");
 		}
 	}
 
@@ -87,6 +89,7 @@ public class SQLQueryExecuter {
 			this.stm.close();
 			this.conn.close();
 			this.rs.close();
+			sqlQueryExecuter = null;
 		} catch (SQLException ex) {
 			Logger.getLogger(SQLQueryExecuter.class.getName()).log(Level.SEVERE, null, ex);
 		}
