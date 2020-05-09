@@ -130,4 +130,16 @@ public class DatabaseInteractor {
 
 	}
 
+	public void updateUnionFees(int anInt, float aFloat) {
+
+	}
+
+	public void addUnionEmployee(int anInt, int anInt1) {
+
+	}
+
+	public void addUnion(String string) {
+
+	}
+
 }
