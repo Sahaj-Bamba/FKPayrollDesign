@@ -74,14 +74,16 @@ public class SQLQueryExecuter {
 		return null;
 	}
 
-	public void update(String sql) {
+	public boolean update(String sql) {
 		System.out.println(sql);
 		try {
 			this.stm.executeUpdate(sql);
 		} catch (SQLException ex) {
 			System.out.println("There was some problem.");
 			System.out.println("Please check your values and try again latter");
+			return false;
 		}
+		return true;
 	}
 
 	public void close(){

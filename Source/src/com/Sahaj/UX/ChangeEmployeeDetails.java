@@ -24,6 +24,7 @@ public class ChangeEmployeeDetails extends Menu{
 		choices.add("Commission");
 		choices.add("Mode of Payment");
 		choices.add("Address");
+		choices.add("Account");
 		choices.add("Go Back");
 
 	}
@@ -55,9 +56,21 @@ public class ChangeEmployeeDetails extends Menu{
 				break;
 			case 5: address();
 				break;
-			case 6: goBack();
+			case 6: account();
+				break;
+			case 7: goBack();
 				break;
 		}
+	}
+
+	private void account() {
+
+		System.out.println("Account Number : ");
+		String account;
+		Scanner sc = new Scanner(System.in);
+		account = sc.next();
+		DatabaseInteractor.getInstance().updateAccount(id,account);
+
 	}
 
 	private void commission() {
