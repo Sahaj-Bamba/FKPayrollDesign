@@ -59,7 +59,7 @@ public class PostSalesReceipt {
 				System.out.println("Please enter correct amount.");
 			}
 		}
-		
+
 		DatabaseInteractor.getInstance().addSalesReceipt(id,date,amount);
 
 	}

@@ -51,4 +51,7 @@ public class DatabaseInteractor {
 
 	public void addSalesReceipt(int id, Date date, Float amount) {
 	}
+
+	public void addTimeCard(int id, Date date, Float amount) {
+	}
 }
