@@ -1,5 +1,7 @@
 package com.Sahaj.Utilities;
 
+import java.util.Scanner;
+
 /**
  * Different Global Control variables
  *
@@ -27,5 +29,43 @@ public class Controller {
 		return controller;
 	}
 
+	public float getFloat(String heading){
+		Scanner sc = new Scanner(System.in);
+		float value=0f;
+		while (true){
+			System.out.print(heading);
+			try{
+				value = Float.parseFloat(sc.next());
+				break;
+			}catch (NumberFormatException ex) {
+				System.out.println("Please enter correct amount.");
+			}
+		}
+		return value;
+	}
 
+	public int getInt(String heading){
+		Scanner sc = new Scanner(System.in);
+		int value=0;
+		while (true){
+			System.out.print(heading);
+			try{
+				value = Integer.parseInt(sc.next());
+				break;
+			}catch (NumberFormatException ex) {
+				System.out.println("Please enter correct amount.");
+			}
+		}
+		return value;
+	}
+
+	public String getString(String heading){
+
+		Scanner sc = new Scanner(System.in);
+		String value;
+		System.out.print(heading);
+		value = sc.nextLine();
+		return value;
+
+	}
 }

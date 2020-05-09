@@ -1,5 +1,6 @@
 package com.Sahaj.UX;
 
+import com.Sahaj.Utilities.Controller;
 import com.Sahaj.Utilities.DatabaseInteractor;
 
 import java.util.Scanner;
@@ -34,55 +35,15 @@ public class Union extends Menu{
 	}
 
 	private void updateFee() {
-		DatabaseInteractor.getInstance().updateUnionFees(getInt("Union Id : "),getFloat("Weekly amount : "));
+		DatabaseInteractor.getInstance().updateUnionFees(Controller.getInstance().getInt("Union Id : "),Controller.getInstance().getFloat("Weekly amount : "));
 	}
 
 	private void addEmployee() {
-		DatabaseInteractor.getInstance().addUnionEmployee(getInt("Union Id : "),getInt("Employee Id : "));
+		DatabaseInteractor.getInstance().addUnionEmployee(Controller.getInstance().getInt("Union Id : "),Controller.getInstance().getInt("Employee Id : "));
 	}
 
 	private void addUnion() {
-		DatabaseInteractor.getInstance().addUnion(getString("Union name : "));
-	}
-
-	private float getFloat(String heading){
-		Scanner sc = new Scanner(System.in);
-		float value=0f;
-		while (true){
-			System.out.print(heading);
-			try{
-				value = Float.parseFloat(sc.next());
-				break;
-			}catch (NumberFormatException ex) {
-				System.out.println("Please enter correct amount.");
-			}
-		}
-		return value;
-	}
-
-	private int getInt(String heading){
-		Scanner sc = new Scanner(System.in);
-		int value=0;
-		while (true){
-			System.out.print(heading);
-			try{
-				value = Integer.parseInt(sc.next());
-				break;
-			}catch (NumberFormatException ex) {
-				System.out.println("Please enter correct amount.");
-			}
-		}
-		return value;
-	}
-
-	private String getString(String heading){
-
-		Scanner sc = new Scanner(System.in);
-		String value;
-		System.out.print(heading);
-		value = sc.nextLine();
-		return value;
-
+		DatabaseInteractor.getInstance().addUnion(Controller.getInstance().getString("Union name : "));
 	}
 
 }
