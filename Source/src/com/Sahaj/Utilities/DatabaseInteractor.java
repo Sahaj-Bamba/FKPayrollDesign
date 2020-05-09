@@ -18,6 +18,8 @@ public class DatabaseInteractor {
 		return databaseInteractor;
 	}
 
+
+
 	public void addEmployee(String name, PaymentScheme paymentScheme, float salary, float commission, ModeOfPayment modeOfPayment, String address) {
 	
 		//@// TODO: 09/05/20 Add Employee code
@@ -28,5 +30,20 @@ public class DatabaseInteractor {
 
 		// @TODO: 09/05/20 Delete Employee
 
+	}
+
+	public void updatePaymentScheme(int id, PaymentScheme paymentScheme) {
+	}
+
+	public void updateCommission(int id, float commission) {
+	}
+
+	public void updateModeOfPayment(int id, ModeOfPayment modeOfPayment) {
+	}
+
+	public void updateAddress(int id, String address) {
+	}
+
+	public void updateSalary(int id, Float salary) {
 	}
 }
