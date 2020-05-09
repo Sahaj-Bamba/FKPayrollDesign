@@ -12,6 +12,7 @@ public class MainMenu extends Menu {
 
 	@Override
 	protected void init() {
+		mainHeading = "Welcome to the Pay Roll system.\nPlease enter your choice.";
 		choices.add("Add new Employee ");
 		choices.add("Delete Employee ");
 		choices.add("Post Time Card ");

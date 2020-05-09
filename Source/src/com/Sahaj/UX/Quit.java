@@ -18,7 +18,8 @@ public class Quit extends Menu{
 		switch (choice){
 			case 1: quit();
 				break;
-			case 2: return;
+			case 2: goBack();
+				break;
 		}
 	}
 

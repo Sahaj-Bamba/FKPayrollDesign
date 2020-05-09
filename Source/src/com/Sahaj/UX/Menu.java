@@ -1,14 +1,15 @@
 package com.Sahaj.UX;
 
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public abstract class Menu {
 	protected ArrayList<String> choices = new ArrayList<String>();
 	protected String mainHeading;
+	private boolean willContinue;
 
 	public Menu(){
+		willContinue = true;
 		init();
 		start();
 	}
@@ -16,14 +17,15 @@ public abstract class Menu {
 	protected abstract void init();
 
 	private final void start() {
-
+		String choiceHolder;
 		int choice = 0;
 		Scanner scanner = new Scanner(System.in);
-		while (true){
+		while (willContinue){
 			showMenu();
 			try {
-				choice = scanner.nextInt();
-			}catch (InputMismatchException ex){
+				choiceHolder = scanner.next();
+				choice = Integer.parseInt(choiceHolder);
+			}catch (NumberFormatException ex){
 				choice = 0;
 			}
 			if(testChoice(choice)){
@@ -34,10 +36,10 @@ public abstract class Menu {
 	}
 
 	private final boolean testChoice(int choice){
-		if (choice<=choices.size()+1 && choice>=1){
+		if (choice<=choices.size() && choice>=1){
 			return true;
 		}
-		System.out.println("Please enter a valid number between (1-"+choices.size()+1+")");
+		System.out.println("Please enter a valid number between (1-"+(choices.size()+1)+")");
 		return false;
 	}
 
@@ -48,6 +50,10 @@ public abstract class Menu {
 		for (int i = 0; i < choices.size(); i++) {
 			System.out.println((i+1)+") "+choices.get(i));
 		}
+	}
+
+	protected final void goBack(){
+		willContinue = false;
 	}
 
 }
