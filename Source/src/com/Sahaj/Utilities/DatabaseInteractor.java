@@ -1,5 +1,8 @@
 package com.Sahaj.Utilities;
 
+import com.Sahaj.Constant.ModeOfPayment;
+import com.Sahaj.Constant.PaymentScheme;
+
 public class DatabaseInteractor {
 
 	private static DatabaseInteractor databaseInteractor;
@@ -15,4 +18,9 @@ public class DatabaseInteractor {
 		return databaseInteractor;
 	}
 
+	public void addEmployee(String name, PaymentScheme paymentScheme, float salary, float commission, ModeOfPayment modeOfPayment, String address) {
+	
+		//@// TODO: 09/05/20 Add Employee code 
+		
+	}
 }
