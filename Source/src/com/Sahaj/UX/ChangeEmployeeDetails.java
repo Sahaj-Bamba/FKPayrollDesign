@@ -2,8 +2,10 @@ package com.Sahaj.UX;
 
 import com.Sahaj.Constant.ModeOfPayment;
 import com.Sahaj.Constant.PaymentScheme;
+import com.Sahaj.Utilities.Controller;
 import com.Sahaj.Utilities.DatabaseInteractor;
 
+import java.util.Date;
 import java.util.Scanner;
 
 public class ChangeEmployeeDetails extends Menu{
@@ -33,16 +35,7 @@ public class ChangeEmployeeDetails extends Menu{
 	protected void makeMove(int choice) {
 
 		if (choice!=6) {
-			Scanner sc = new Scanner(System.in);
-			while (true) {
-				System.out.print("Employee Id : ");
-				try {
-					id = Integer.parseInt(sc.next());
-					break;
-				} catch (NumberFormatException ex) {
-					System.out.println("Please enter correct amount.");
-				}
-			}
+			id = Controller.getInstance().getInt("Employee Id : ");
 		}
 
 		switch (choice){
@@ -65,31 +58,14 @@ public class ChangeEmployeeDetails extends Menu{
 
 	private void account() {
 
-		System.out.println("Account Number : ");
-		String account;
-		Scanner sc = new Scanner(System.in);
-		account = sc.next();
+		String account = Controller.getInstance().getString("Account Number : ");
 		DatabaseInteractor.getInstance().updateAccount(id,account);
 
 	}
 
 	private void commission() {
 
-		float commission;
-		Scanner sc = new Scanner(System.in);
-
-		while (true){
-			System.out.print("Commission : ");
-			try{
-				commission = Float.parseFloat(sc.next());
-				if (commission<=0){
-					throw new NumberFormatException();
-				}
-				break;
-			}catch (NumberFormatException ex) {
-				System.out.println("Please enter correct amount.");
-			}
-		}
+		Float commission = Controller.getInstance().getFloat("Commission amount in percent : ");
 
 		DatabaseInteractor.getInstance().updateCommission(id,commission);
 
@@ -111,34 +87,16 @@ public class ChangeEmployeeDetails extends Menu{
 
 	private void address() {
 
-		Scanner sc = new Scanner(System.in);
-		String address;
-		System.out.print("Address : ");
-		address = sc.nextLine();
-
+		String address = Controller.getInstance().getString("Address : ");
 		DatabaseInteractor.getInstance().updateAddress(id,address);
 
 	}
 
 	private void salary() {
 
-		Scanner sc = new Scanner(System.in);
-		Float salary;
+		Float amount = Controller.getInstance().getFloat("Salary : ");
 
-		while (true){
-			System.out.print("Salary : ");
-			try{
-				salary = Float.parseFloat(sc.next());
-				if (salary<=0){
-					throw new NumberFormatException();
-				}
-				break;
-			}catch (NumberFormatException ex) {
-				System.out.println("Please enter correct amount.");
-			}
-		}
-
-		DatabaseInteractor.getInstance().updateSalary(id,salary);
+		DatabaseInteractor.getInstance().updateSalary(id,amount);
 
 	}
 

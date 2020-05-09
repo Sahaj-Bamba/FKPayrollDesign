@@ -22,7 +22,7 @@ public class ServiceCharge {
 
 		int id = Controller.getInstance().getInt("Employee Id : ");
 		Date date = Controller.getInstance().getDate("Date");
-		Float amount = Controller.getInstance().getFloat("Number of hours : ");
+		Float amount = Controller.getInstance().getFloat("Charge : ");
 		String reason = Controller.getInstance().getString("Reason : ");
 
 		DatabaseInteractor.getInstance().addCharge(id,date,amount,reason);

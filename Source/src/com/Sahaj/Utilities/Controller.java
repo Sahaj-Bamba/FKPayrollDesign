@@ -82,7 +82,7 @@ public class Controller {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-
+		return date;
 	}
 
 }
