@@ -1,9 +1,11 @@
 package com.Sahaj.Main;
 
+import com.Sahaj.Utilities.SQLQueryExecuter;
+
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
-        System.out.println("Hello World");
+        SQLQueryExecuter.startConnection("root", "", "jdbc:mysql://localhost:3306/PayrollDesign");
+	    System.out.println("Hello World");
     }
 }
