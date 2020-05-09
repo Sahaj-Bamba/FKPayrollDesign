@@ -1,5 +1,6 @@
 package com.Sahaj.UX;
 
+import com.Sahaj.Utilities.Controller;
 import com.Sahaj.Utilities.DatabaseInteractor;
 
 import java.text.ParseException;
@@ -19,48 +20,10 @@ public class ServiceCharge {
 
 	private void start() {
 
-		int id;
-		Scanner sc = new Scanner(System.in);
-		while (true){
-			System.out.print("Employee Id : ");
-			try{
-				id = Integer.parseInt(sc.next());
-				if (id<=0){
-					throw new NumberFormatException();
-				}
-				break;
-			}catch (NumberFormatException ex) {
-				System.out.println("Please enter correct number.");
-			}
-		}
-
-		System.out.print("Date : ");
-		String sDate = sc.next();
-		Date date = null;
-		try {
-			date =  new SimpleDateFormat("dd/MM/yyyy").parse(sDate);
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-
-		//@todo: Handle Date problems.
-
-		Float amount;
-
-		while (true){
-			System.out.print("Number of hours : ");
-			try{
-				amount = Float.parseFloat(sc.next());
-				if (amount<=0){
-					throw new NumberFormatException();
-				}
-				break;
-			}catch (NumberFormatException ex) {
-				System.out.println("Please enter correct amount.");
-			}
-		}
-
-		String reason = sc.nextLine();
+		int id = Controller.getInstance().getInt("Employee Id : ");
+		Date date = Controller.getInstance().getDate("Date");
+		Float amount = Controller.getInstance().getFloat("Number of hours : ");
+		String reason = Controller.getInstance().getString("Reason : ");
 
 		DatabaseInteractor.getInstance().addCharge(id,date,amount,reason);
 

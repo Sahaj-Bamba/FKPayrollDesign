@@ -1,5 +1,8 @@
 package com.Sahaj.Utilities;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 
 /**
@@ -68,4 +71,18 @@ public class Controller {
 		return value;
 
 	}
+
+	public Date getDate(String heading){
+		Scanner sc = new Scanner(System.in);
+		System.out.print(heading + " Format (dd/MM/yyyy) : ");
+		String sDate = sc.next();
+		Date date = null;
+		try {
+			date =  new SimpleDateFormat("dd/MM/yyyy").parse(sDate);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+
+	}
+
 }
