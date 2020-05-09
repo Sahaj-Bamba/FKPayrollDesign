@@ -5,8 +5,8 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public abstract class Menu {
-	ArrayList<String> choices = new ArrayList<String>();
-	private String mainHeading;
+	protected ArrayList<String> choices = new ArrayList<String>();
+	protected String mainHeading;
 
 	public Menu(){
 		init();
@@ -15,7 +15,7 @@ public abstract class Menu {
 
 	protected abstract void init();
 
-	private void start() {
+	private final void start() {
 
 		int choice = 0;
 		Scanner scanner = new Scanner(System.in);
@@ -33,7 +33,7 @@ public abstract class Menu {
 
 	}
 
-	private boolean testChoice(int choice){
+	private final boolean testChoice(int choice){
 		if (choice<=choices.size()+1 && choice>=1){
 			return true;
 		}
@@ -43,7 +43,7 @@ public abstract class Menu {
 
 	protected abstract void makeMove(int choice);
 
-	private void showMenu() {
+	private final void showMenu() {
 		System.out.println(mainHeading);
 		for (int i = 0; i < choices.size(); i++) {
 			System.out.println((i+1)+") "+choices.get(i));
