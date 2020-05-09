@@ -130,15 +130,39 @@ public class DatabaseInteractor {
 
 	}
 
-	public void updateUnionFees(int anInt, float aFloat) {
-
+	public void updateUnionFees(int unionId, float fees) {
+		SQLQueryExecuter.getInstance().update("UPDATE `Union_` SET `Fees`="+fees+" WHERE `Id`= "+unionId+" ");
 	}
 
-	public void addUnionEmployee(int anInt, int anInt1) {
-
+	public void addUnionEmployee(int unionId, int empId) {
+		SQLQueryExecuter.getInstance().update("INSERT INTO `EmployeeUnion`(`EmpId`, `UnionId`) VALUES ("+empId+","+unionId+")");
 	}
 
-	public void addUnion(String string) {
+	public void addUnion(String name) {
+		int id = -1;
+		ResultSet resultSet = SQLQueryExecuter.getInstance().select("Select Id from Union_ order by Id desc");
+
+		try {
+			if(resultSet.next()) {
+				id = resultSet.getInt("Id");
+			}
+		} catch (SQLException throwables) {
+			System.out.println("Something went wrong");
+		}
+
+		// Adding
+		SQLQueryExecuter.getInstance().update("INSERT INTO `Union_`(`Name`) VALUES ('"+name+"')");
+
+		resultSet = SQLQueryExecuter.getInstance().select("Select Id from Union_ order by Id desc");
+
+		try {
+			if(resultSet.next() && id != resultSet.getInt("Id")) {
+				id = resultSet.getInt("Id");
+				System.out.println("New Union added with id " + id);
+			}
+		} catch (SQLException throwables) {
+			System.out.println("Something went wrong");
+		}
 
 	}
 
