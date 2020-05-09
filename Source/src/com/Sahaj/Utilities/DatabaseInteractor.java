@@ -3,6 +3,8 @@ package com.Sahaj.Utilities;
 import com.Sahaj.Constant.ModeOfPayment;
 import com.Sahaj.Constant.PaymentScheme;
 
+import java.util.Date;
+
 public class DatabaseInteractor {
 
 	private static DatabaseInteractor databaseInteractor;
@@ -45,5 +47,8 @@ public class DatabaseInteractor {
 	}
 
 	public void updateSalary(int id, Float salary) {
+	}
+
+	public void addSalesReceipt(int id, Date date, Float amount) {
 	}
 }

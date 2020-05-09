@@ -20,7 +20,7 @@ public class DeleteEmployee {
 		int id;
 		Scanner sc = new Scanner(System.in);
 		while (true){
-			System.out.print("Salary : ");
+			System.out.print("Employee Id : ");
 			try{
 				id = Integer.parseInt(sc.next());
 				if (id<=0){
