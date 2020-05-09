@@ -1,11 +1,7 @@
 package com.Sahaj.UX;
 
-import java.util.ArrayList;
-import java.util.InputMismatchException;
-import java.util.Scanner;
-
 /**
- * The main menu msg
+ * The main menu
  */
 
 public class MainMenu extends Menu {
@@ -50,6 +46,5 @@ public class MainMenu extends Menu {
 				break;
 		}
 	}
-
 
 }
