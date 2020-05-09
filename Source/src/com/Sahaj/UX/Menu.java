@@ -4,21 +4,16 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Quit {
-
+public abstract class Menu {
 	ArrayList<String> choices = new ArrayList<String>();
 	private String mainHeading;
 
-	public Quit(){
+	public Menu(){
 		init();
 		start();
 	}
 
-	private void init() {
-		mainHeading = "Are you sure that you want to quit ?";
-		choices.add("Yes ");
-		choices.add("No ");
-	}
+	protected abstract void init();
 
 	private void start() {
 
@@ -46,28 +41,7 @@ public class Quit {
 		return false;
 	}
 
-	private void makeMove(int choice) {
-		switch (choice){
-			case 1: new AddEmployee();
-				break;
-			case 2: new DeleteEmployee();
-				break;
-			case 3: new PostTimeCard();
-				break;
-			case 4: new PostSalesReceipt();
-				break;
-			case 5: new UnionFees();
-				break;
-			case 6: new ServiceCharge();
-				break;
-			case 7: new ChangeEmployeeDetails();
-				break;
-			case 8: new Payroll();
-				break;
-			case 9: new Quit();
-				break;
-		}
-	}
+	protected abstract void makeMove(int choice);
 
 	private void showMenu() {
 		System.out.println(mainHeading);
