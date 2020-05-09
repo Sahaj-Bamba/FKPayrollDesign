@@ -20,7 +20,13 @@ public class DatabaseInteractor {
 
 	public void addEmployee(String name, PaymentScheme paymentScheme, float salary, float commission, ModeOfPayment modeOfPayment, String address) {
 	
-		//@// TODO: 09/05/20 Add Employee code 
+		//@// TODO: 09/05/20 Add Employee code
 		
+	}
+
+	public void deleteEmployee(int id) {
+
+		// @TODO: 09/05/20 Delete Employee
+
 	}
 }
