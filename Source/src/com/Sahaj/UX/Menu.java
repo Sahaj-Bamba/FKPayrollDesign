@@ -11,12 +11,11 @@ public abstract class Menu {
 	public Menu(){
 		willContinue = true;
 		init();
-		start();
 	}
 
 	protected abstract void init();
 
-	private final void start() {
+	protected final int start() {
 		String choiceHolder;
 		int choice = 0;
 		Scanner scanner = new Scanner(System.in);
@@ -32,7 +31,7 @@ public abstract class Menu {
 				makeMove(choice);
 			}
 		}
-
+		return choice;
 	}
 
 	private final boolean testChoice(int choice){

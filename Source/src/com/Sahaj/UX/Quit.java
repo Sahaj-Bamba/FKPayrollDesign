@@ -4,6 +4,7 @@ public class Quit extends Menu{
 
 	public Quit(){
 		super();
+		start();
 	}
 
 	@Override
