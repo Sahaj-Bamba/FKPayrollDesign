@@ -17,7 +17,18 @@ public class Controller {
 	 */
 	private static Controller controller = null;
 
+	private int MonthlyBillDate;
+	private int HourlyBillDate;
+	private int MembershipFeeDate;
+
 	private Controller() {
+		init();
+	}
+
+	private void init() {
+		MonthlyBillDate = 1;
+		HourlyBillDate = 5;
+		MembershipFeeDate = 5;
 	}
 
 	/**
@@ -85,4 +96,15 @@ public class Controller {
 		return date;
 	}
 
+	public int getMonthlyBillDate() {
+		return MonthlyBillDate;
+	}
+
+	public int getHourlyBillDate() {
+		return HourlyBillDate;
+	}
+
+	public int getMembershipFeeDate() {
+		return MembershipFeeDate;
+	}
 }

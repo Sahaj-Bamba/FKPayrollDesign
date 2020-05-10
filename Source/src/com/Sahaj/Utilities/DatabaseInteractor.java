@@ -2,9 +2,14 @@ package com.Sahaj.Utilities;
 
 import com.Sahaj.Constant.ModeOfPayment;
 import com.Sahaj.Constant.PaymentScheme;
+import com.Sahaj.Main.Employee;
+import com.Sahaj.Main.Hourly;
+import com.Sahaj.Main.Monthly;
+import com.Sahaj.Main.Sales;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
 
 
@@ -166,4 +171,131 @@ public class DatabaseInteractor {
 
 	}
 
+	public ArrayList<Employee> loadEmployees() {
+
+		ArrayList<Employee> employees = new ArrayList<>();
+
+		ResultSet resultSet = SQLQueryExecuter.getInstance().select("SELECT * FROM `Employee` WHERE 1");
+		try {
+			while (resultSet.next()) {
+				Employee employee = new Employee(resultSet.getInt("Id"),resultSet.getString("Name"),resultSet.getFloat("Salary"),resultSet.getFloat("Commission"),resultSet.getString("Address"),resultSet.getDate("LastPayed"));
+				if (resultSet.getInt("SalaryType") == PaymentScheme.HourlySalary.ordinal()){
+					employee.setTypeOfPayment(new Hourly());
+				}else if(resultSet.getInt("SalaryType") == PaymentScheme.MonthlySalary.ordinal()){
+					employee.setTypeOfPayment(new Monthly());
+				}
+				employee.setModeOfPayment(ModeOfPayment.values()[resultSet.getInt("ModeOfPayment")]);
+				if (resultSet.getInt("ModeOfPayment") == ModeOfPayment.OnlineBank.ordinal()){
+					ResultSet resultSet2 = SQLQueryExecuter.getInstance().select("SELECT * FROM `AccountDetails` WHERE EmpId = "+resultSet.getInt("EmpId"));
+					if (resultSet2.next()){
+						employee.setAccNo(resultSet2.getString("AccountNumber"));
+					}
+				}
+				employees.add(employee);
+			}
+		}catch (SQLException throwables) {
+			System.out.println("Something went wrong please try again latter.");
+		}
+		return employees;
+	}
+
+	public float getHours(Date lastPayed, Date endDate, int id) {
+		float hours = 0f;
+
+		ResultSet resultSet = SQLQueryExecuter.getInstance().select("SELECT * FROM `TimeCard` WHERE EmpId = " + id + " And Date >= '" + lastPayed + "' And Date < '" + endDate + "' ");
+		try {
+			while (resultSet.next()) {
+				if (resultSet.getFloat("NumberOfHours")>8){
+					hours += 8f;
+				}else{
+					hours += resultSet.getFloat("NumberOfHours");
+				}
+			}
+		} catch (SQLException throwables) {
+			throwables.printStackTrace();
+		}
+		return hours;
+	}
+
+		public float getExtraHours(Date lastPayed, Date endDate, float salary, int id) {
+
+			float hours = 0f;
+
+			ResultSet resultSet = SQLQueryExecuter.getInstance().select("SELECT * FROM `TimeCard` WHERE EmpId = " + id + " And Date >= '" + lastPayed + "' And Date < '" + endDate + "' ");
+			try {
+				while (resultSet.next()) {
+					if (resultSet.getFloat("NumberOfHours")>8){
+						hours += resultSet.getFloat("NumberOfHours") - 8f;
+					}else{
+						hours += 0;
+					}
+				}
+			} catch (SQLException throwables) {
+				throwables.printStackTrace();
+			}
+			return hours;
+
+		}
+
+	public ArrayList<Sales> getSaled(Date lastPayed, Date endDate, int id) {
+	
+		ArrayList<Sales> sales = null;
+		ResultSet resultSet = SQLQueryExecuter.getInstance().select("SELECT * FROM `Sales` WHERE EmpId = " + id + " And Date >= '" + lastPayed + "' And Date < '" + endDate + "' ");
+		try {
+			while (resultSet.next()) {
+				sales.add(new Sales(resultSet.getFloat("Amount")));
+			}
+		} catch (SQLException throwables) {
+			throwables.printStackTrace();
+		}
+		return sales;
+	}
+
+	public void updatePayed(int id, Date endDate) {
+
+		SQLQueryExecuter.getInstance().update("Update Employee SET LastPayed = '"+endDate+"' where Id = "+id);
+
+	}
+
+	public float getCharges(Date lastPayed, Date endDate, int id) {
+
+		float value = 0f;
+
+		ResultSet resultSet = SQLQueryExecuter.getInstance().select("SELECT * FROM `ExtraCharges` WHERE EmpId = " + id + " And Date >= '" + lastPayed + "' And Date < '" + endDate + "' ");
+		try {
+			while (resultSet.next()) {
+				value += resultSet.getFloat("Amount");
+			}
+		} catch (SQLException throwables) {
+			throwables.printStackTrace();
+		}
+		return value;
+
+
+	}
+
+	public void addMembershipFees(int id, Date endDate) {
+		int unionId = -1;
+		ResultSet resultSet = SQLQueryExecuter.getInstance().select("SELECT * FROM `EmployeeUnion` WHERE EmpId = " + id );
+		try {
+			if (resultSet.next()) {
+				unionId = resultSet.getInt("UnionId");
+			}
+		} catch (SQLException throwables) {
+			throwables.printStackTrace();
+		}
+		if (unionId == -1){
+			return;
+		}
+		float charges = 0f;
+		resultSet = SQLQueryExecuter.getInstance().select("SELECT * FROM `Union_` WHERE Id = " + unionId );
+		try {
+			if (resultSet.next()) {
+				charges = resultSet.getInt("Fees");
+			}
+		} catch (SQLException throwables) {
+			throwables.printStackTrace();
+		}
+		addCharge(id,endDate,charges,"Union fees");
+	}
 }
