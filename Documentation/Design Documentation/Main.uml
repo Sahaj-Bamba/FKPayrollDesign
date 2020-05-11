@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.Sahaj.Main</OriginalElement>
+  <nodes>
+    <node x="0.0" y="618.0">com.Sahaj.Main.Monthly</node>
+    <node x="613.0" y="512.0">com.Sahaj.Main.Sales</node>
+    <node x="-329.0" y="317.0">com.Sahaj.Main.Main</node>
+    <node x="0.0" y="0.0">com.Sahaj.Main.Employee</node>
+    <node x="294.0" y="618.0">com.Sahaj.Main.Hourly</node>
+    <node x="147.0" y="512.0">com.Sahaj.Main.TypeOfPayment</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.Sahaj.Main.Monthly" target="com.Sahaj.Main.TypeOfPayment">
+      <point x="0.0" y="-28.0" />
+      <point x="137.0" y="593.0" />
+      <point x="215.5" y="593.0" />
+      <point x="-68.5" y="28.0" />
+    </edge>
+    <edge source="com.Sahaj.Main.Hourly" target="com.Sahaj.Main.TypeOfPayment">
+      <point x="0.0" y="-28.0" />
+      <point x="431.0" y="593.0" />
+      <point x="352.5" y="593.0" />
+      <point x="68.5" y="28.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="185.0" y="361.5" />
+  <SelectedNodes>
+    <node>com.Sahaj.Main.Main</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.Sahaj.Constant</OriginalElement>
+  <nodes>
+    <node x="0.0" y="198.0">com.Sahaj.Constant.PaymentScheme</node>
+    <node x="0.0" y="0.0">com.Sahaj.Constant.ModeOfPayment</node>
+  </nodes>
+  <notes />
+  <edges />
+  <settings layout="Hierarchic Group" zoom="1.0" x="174.5" y="27.0" />
+  <SelectedNodes>
+    <node>com.Sahaj.Constant.PaymentScheme</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Properties</Category>
+    <Category>Methods</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

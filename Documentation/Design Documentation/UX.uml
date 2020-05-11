@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.Sahaj.UX</OriginalElement>
+  <nodes>
+    <node x="0.0" y="408.5">com.Sahaj.UX.ChoiceMenu</node>
+    <node x="523.5" y="0.0">com.Sahaj.UX.Menu</node>
+    <node x="0.0" y="938.0">com.Sahaj.UX.Payroll</node>
+    <node x="748.0" y="324.0">com.Sahaj.UX.ChangeEmployeeDetails</node>
+    <node x="997.0" y="372.5">com.Sahaj.UX.Union</node>
+    <node x="979.0" y="643.0">com.Sahaj.UX.PostTimeCard</node>
+    <node x="331.0" y="643.0">com.Sahaj.UX.PostSalesReceipt</node>
+    <node x="336.00000000000006" y="396.5">com.Sahaj.UX.Quit</node>
+    <node x="555.0" y="643.0">com.Sahaj.UX.DeleteEmployee</node>
+    <node x="0.0" y="643.0">com.Sahaj.UX.AddEmployee</node>
+    <node x="542.0" y="408.5">com.Sahaj.UX.MainMenu</node>
+    <node x="774.0" y="643.0">com.Sahaj.UX.ServiceCharge</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.Sahaj.UX.Union" target="com.Sahaj.UX.Menu">
+      <point x="0.0" y="-88.5" />
+      <point x="1090.0" y="294.0" />
+      <point x="724.2" y="294.0" />
+      <point x="89.19999999999993" y="137.0" />
+    </edge>
+    <edge source="com.Sahaj.UX.ChangeEmployeeDetails" target="com.Sahaj.UX.Menu">
+      <point x="0.0" y="-137.0" />
+      <point x="862.5" y="304.0" />
+      <point x="679.5999999999999" y="304.0" />
+      <point x="44.59999999999991" y="137.0" />
+    </edge>
+    <edge source="com.Sahaj.UX.MainMenu" target="com.Sahaj.UX.Menu">
+      <point x="0.0" y="-52.5" />
+      <point x="0.0" y="137.0" />
+    </edge>
+    <edge source="com.Sahaj.UX.Quit" target="com.Sahaj.UX.Menu">
+      <point x="0.0" y="-64.5" />
+      <point x="429.00000000000006" y="304.0" />
+      <point x="590.4000000000001" y="304.0" />
+      <point x="-44.60000000000002" y="137.0" />
+    </edge>
+    <edge source="com.Sahaj.UX.ChoiceMenu" target="com.Sahaj.UX.Menu">
+      <point x="0.0" y="-52.5" />
+      <point x="158.0" y="294.0" />
+      <point x="545.8" y="294.0" />
+      <point x="-89.20000000000005" y="137.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="465.0" y="643.5" />
+  <SelectedNodes>
+    <node>com.Sahaj.UX.Payroll</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Methods</Category>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Properties</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
